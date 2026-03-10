@@ -92,20 +92,25 @@ button {
 }
 
 .panel-card-cover {
-  justify-content: space-between;
+  position: relative;
+  justify-content: center;
   background:
     radial-gradient(circle at 50% 18%, rgb(255 236 211 / 78%), transparent 30%),
+    radial-gradient(circle at 80% 80%, rgb(206 109 109 / 10%), transparent 24%),
     linear-gradient(180deg, rgb(255 255 255 / 76%), rgb(255 249 240 / 88%)),
     var(--panel);
 }
 
 .panel-topbar {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  right: 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.hero-chip,
 .section-emoji,
 .github-button {
   width: 44px;
@@ -117,14 +122,6 @@ button {
   border: 1px solid var(--line);
   border-radius: 14px;
   box-shadow: 0 10px 24px rgb(110 74 39 / 8%);
-}
-
-.hero-chip {
-  width: auto;
-  padding: 0 14px;
-  color: var(--gold);
-  font-size: 0.85rem;
-  font-weight: 700;
 }
 
 .github-button {
@@ -140,6 +137,15 @@ button {
 .panel-stack-center {
   align-items: center;
   text-align: center;
+}
+
+.hero-center {
+  width: 100%;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .panel-stack {
@@ -212,15 +218,9 @@ h3 {
   margin-top: 22px;
 }
 
-.hero-hint,
 .body-copy-muted,
 .legal-copy {
   color: var(--muted);
-}
-
-.hero-hint {
-  margin-top: 18px;
-  font-size: 0.92rem;
 }
 
 .primary-button,
@@ -267,6 +267,11 @@ h3 {
   flex-direction: column;
   align-items: center;
   gap: 12px;
+}
+
+.topbar-spacer {
+  width: 44px;
+  height: 44px;
 }
 
 .feature-card,
@@ -327,6 +332,24 @@ h3 {
 .highlight-accent {
   color: var(--button-blue-start);
   font-weight: 800;
+}
+
+.core-numbers {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.core-numbers span {
+  padding: 12px 0;
+  color: var(--ink);
+  background: rgb(255 255 255 / 56%);
+  border: 1px solid rgb(128 88 59 / 10%);
+  border-radius: 16px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
 }
 
 .factor-list {
@@ -396,18 +419,19 @@ h3 {
   border-radius: inherit;
 }
 
-.profile-list {
-  width: 100%;
-  display: grid;
-  gap: 12px;
-  padding: 0;
-  list-style: none;
-}
-
 .profile-card {
   display: flex;
   align-items: center;
   gap: 14px;
+}
+
+.profile-card-large {
+  min-height: 320px;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background:
+    linear-gradient(180deg, rgb(255 255 255 / 94%), rgb(255 248 239 / 92%));
 }
 
 .profile-avatar {
@@ -417,6 +441,12 @@ h3 {
   object-fit: cover;
   border: 3px solid rgb(201 130 43 / 12%);
   border-radius: 50%;
+}
+
+.profile-avatar-large {
+  width: 108px;
+  height: 108px;
+  border-width: 4px;
 }
 
 .profile-copy {
@@ -434,6 +464,37 @@ h3 {
 .profile-copy span {
   color: var(--muted);
   font-size: 0.92rem;
+}
+
+.profile-copy-center {
+  align-items: center;
+  text-align: center;
+}
+
+.profile-rail-wrap {
+  width: calc(100% + 16px);
+  margin: 0 -8px;
+}
+
+.profile-rail {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 84%;
+  gap: 14px;
+  padding: 0 8%;
+  margin: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  list-style: none;
+}
+
+.profile-rail::-webkit-scrollbar {
+  display: none;
+}
+
+.profile-slide {
+  scroll-snap-align: center;
 }
 
 .quiz-overlay {
@@ -576,6 +637,11 @@ h3 {
   .factor-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .profile-rail {
+    grid-auto-columns: 58%;
+    padding: 0 18%;
+  }
 }
 
 @media (max-width: 560px) {
@@ -584,9 +650,19 @@ h3 {
     border-radius: 26px;
   }
 
+  .panel-topbar {
+    top: 16px;
+    left: 16px;
+    right: 16px;
+  }
+
   .hero-badges span {
     width: 48px;
     height: 48px;
+  }
+
+  .core-numbers {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .quiz-sheet {
@@ -611,5 +687,10 @@ h3 {
   .keypad-key {
     height: 50px;
     border-radius: 16px;
+  }
+
+  .profile-rail {
+    grid-auto-columns: 88%;
+    padding: 0 6%;
   }
 }

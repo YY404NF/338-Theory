@@ -30,13 +30,13 @@ defineProps<{
   <section :id="id" class="snap-panel panel-factors">
     <div class="panel-card panel-stack">
       <div class="section-title-wrap">
-        <span class="section-emoji">🧩</span>
-        <h2>四个因子块</h2>
+        <span class="section-emoji">🜂</span>
+        <h2>四维剖面</h2>
       </div>
 
       <article v-if="showResults" class="feature-card feature-card-blue result-summary-card">
         <div class="result-summary-main">
-          <h3>你的 338 映射结果</h3>
+          <h3>你的参数映射</h3>
           <p class="body-copy">
             当前共有 <span class="highlight-accent">{{ matchedCount }}</span> 个维度落入标准区间。
           </p>
