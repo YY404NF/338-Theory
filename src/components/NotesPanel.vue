@@ -13,10 +13,12 @@ defineProps<{
       </div>
 
       <article class="feature-card feature-card-rose">
-        <h3>🔖 执行条款</h3>
         <p class="body-copy body-copy-left">▶ 达标者自动进入「马户人才池」，需参加季度选拔大会。</p>
         <p class="body-copy body-copy-left">
           ▶ 未成年人依《未保法》享参赛豁免权，但需<span class="highlight">服马户役</span>（详见附件3.3.8）。
+        </p>
+        <p class="body-copy body-copy-left body-copy-muted">
+          ▶ 所有解释权、补充条款与边界情况，原则上由研究院根据现场气氛酌情裁定。
         </p>
       </article>
 

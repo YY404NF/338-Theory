@@ -29,10 +29,10 @@ defineEmits<{
           <button class="primary-button" type="button" @click="$emit('openQuiz')">
             测测我是不是338
           </button>
-          <button class="secondary-button" type="button" @click="$emit('viewTheory')">
-            直接查看理论
-          </button>
         </div>
+        <button class="hero-scroll-text" type="button" @click="$emit('viewTheory')">
+          下滑直接查看理论
+        </button>
       </div>
     </div>
   </section>
