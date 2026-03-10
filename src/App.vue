@@ -1,14 +1,39 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import profiles from './data/profiles.json'
 import theoryData from './data/theory.json'
+
+type Profile = {
+  name: string
+  date: string
+  avatar: string
+}
+
+const parseProfileDate = (value: string) => {
+  const [datePart = ''] = value.split(' ')
+  const normalized = datePart.replace(/\./g, '-')
+  return new Date(normalized).getTime()
+}
+
+const sortedProfiles = computed(() =>
+  [...(profiles as Profile[])].sort((left, right) => parseProfileDate(right.date) - parseProfileDate(left.date)),
+)
 </script>
 
 <template>
   <main class="page-shell">
+    <div class="page-glow page-glow-left" />
+    <div class="page-glow page-glow-right" />
     <section class="container">
-      <h1>338理论体系</h1>
+      <header class="hero">
+        <p class="eyebrow">338 THEORY ARCHIVE</p>
+        <h1>338理论体系</h1>
+        <p class="hero-copy">
+          一份被重新整理的民间参数档案，用更清晰的结构记录核心标准、理论因子与已知样本。
+        </p>
+      </header>
 
-      <article class="theory-item">
+      <article class="theory-item theory-item-featured">
         <h2>{{ theoryData.core.title }}</h2>
         <p>
           由<span class="highlight">{{ theoryData.core.founder }}</span
@@ -24,38 +49,49 @@ import theoryData from './data/theory.json'
         </a>
       </article>
 
-      <article
-        v-for="factor in theoryData.factors"
-        :key="factor.key"
-        class="theory-item"
-      >
-        <h2>{{ factor.title }}</h2>
-        <p v-if="factor.highlight">
-          {{ factor.descriptionPrefix }}<span class="highlight">{{ factor.highlight }}</span
-          >{{ factor.descriptionSuffix }}
-        </p>
-        <template v-else-if="factor.speculations?.length">
-          <div class="speculation">
-            <p>{{ factor.description }}</p>
-            <p v-for="speculation in factor.speculations" :key="speculation">
-              • {{ speculation }}
-            </p>
-          </div>
-        </template>
-        <p v-else>{{ factor.description }}</p>
-      </article>
+      <section class="factor-grid">
+        <article
+          v-for="factor in theoryData.factors"
+          :key="factor.key"
+          class="theory-item"
+        >
+          <h2>{{ factor.title }}</h2>
+          <p v-if="factor.highlight">
+            {{ factor.descriptionPrefix }}<span class="highlight">{{ factor.highlight }}</span
+            >{{ factor.descriptionSuffix }}
+          </p>
+          <template v-else-if="factor.speculations?.length">
+            <div class="speculation">
+              <p>{{ factor.description }}</p>
+              <p v-for="speculation in factor.speculations" :key="speculation">
+                • {{ speculation }}
+              </p>
+            </div>
+          </template>
+          <p v-else>{{ factor.description }}</p>
+        </article>
+      </section>
 
-      <article class="theory-item">
-        <h2>🌍 地球上已知的标准338个体</h2>
+      <article class="theory-item roster-panel">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">LATEST SUBJECTS</p>
+            <h2>🌍 地球上已知的标准338个体</h2>
+          </div>
+          <span class="section-badge">按发现时间倒序</span>
+        </div>
         <ul class="profile-list">
           <li
-            v-for="profile in profiles"
+            v-for="profile in sortedProfiles"
             :key="profile.name"
             class="profile-item"
           >
             <img :src="profile.avatar" :alt="profile.name" class="avatar" />
             <div class="profile-info">
-              <span class="profile-name">{{ profile.name }}</span>
+              <div class="profile-main">
+                <span class="profile-name">{{ profile.name }}</span>
+                <span class="profile-tag">338认证样本</span>
+              </div>
               <span class="profile-date">{{ profile.date }}</span>
             </div>
           </li>
