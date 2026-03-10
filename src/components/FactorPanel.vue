@@ -35,7 +35,8 @@ defineProps<{
       <div class="factor-list">
         <article class="factor-card">
           <h3>📏 185 cm - 垂直海拔</h3>
-          <p class="body-copy">男性垂直维度基准线，误差范围 ≤±2cm（需提供专业机构测量证明）</p>
+          <p class="body-copy">男性垂直维度基准线</p>
+          <p class="body-copy">误差范围 ≤±2cm（需提供专业机构测量证明）</p>
           <div v-if="showResults && results?.height" class="factor-result">
             <div class="factor-result-head">
               <span>你的数值</span>
@@ -51,8 +52,9 @@ defineProps<{
         <article class="factor-card">
           <h3>⚖️ 90 kg - 质量规范</h3>
           <p class="body-copy">
-            基于BMI黄金比例公式推算的<span class="highlight">理想质量参数</span>，建议季度动态核查
+            基于BMI黄金比例公式推算的<span class="highlight">理想质量参数</span>
           </p>
+          <p class="body-copy">建议季度动态核查</p>
           <div v-if="showResults && results?.weight" class="factor-result">
             <div class="factor-result-head">
               <span>你的数值</span>
@@ -67,7 +69,8 @@ defineProps<{
 
         <article class="factor-card">
           <h3>👞 45 码 - 支撑系统</h3>
-          <p class="body-copy">足部承载体系规格标准（注：该参数与XP系统无直接关联）</p>
+          <p class="body-copy">足部承载体系规格标准</p>
+          <p class="body-copy">（注：该参数与XP系统无直接关联）</p>
           <div v-if="showResults && results?.shoeSize" class="factor-result">
             <div class="factor-result-head">
               <span>你的数值</span>

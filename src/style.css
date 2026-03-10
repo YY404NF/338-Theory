@@ -329,6 +329,7 @@ h3 {
 
 .body-copy-compact {
   margin-top: 8px;
+  line-height: 1.42;
 }
 
 .highlight {
@@ -566,6 +567,7 @@ h3 {
 .quiz-header-center {
   justify-content: center;
   text-align: center;
+  padding: 8px 0 6px;
 }
 
 .quiz-title {

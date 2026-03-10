@@ -31,7 +31,7 @@ defineEmits<{
           </button>
         </div>
         <button class="hero-scroll-text" type="button" @click="$emit('viewTheory')">
-          下滑直接查看理论
+          上滑直接查看理论
         </button>
       </div>
     </div>
