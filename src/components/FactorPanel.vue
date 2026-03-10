@@ -1,66 +1,13 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import type { QuizDimensionResult, QuizKey } from '../utils/types'
 
-type FactorResult = {
-  value: number
-  unit: string
-  description: string
-  ratio: number
-}
-
-type FactorCard = {
-  key: string
-  title: string
-  description?: string
-  descriptionPrefix?: string
-  descriptionSuffix?: string
-  highlight?: string
-  speculations?: readonly string[]
-  result: FactorResult | null
-}
-
-const props = defineProps<{
+defineProps<{
   id?: string
   results: Record<QuizKey, QuizDimensionResult> | null
   globalMessages: string[]
   matchedCount: number | null
   showResults: boolean
 }>()
-
-const factors = computed<FactorCard[]>(() => [
-  {
-    key: 'height',
-    title: '📏 垂直基线',
-    description: '男性垂直维度的第一道门槛，强调轮廓、站姿与第一眼的空间占有率。',
-    result: props.results?.height ?? null,
-  },
-  {
-    key: 'weight',
-    title: '⚖️ 质量密度',
-    descriptionPrefix: '围绕 BMI 黄金比例推导出的',
-    highlight: '理想质量参数',
-    descriptionSuffix: '，强调稳定感、厚度与存在感。',
-    result: props.results?.weight ?? null,
-  },
-  {
-    key: 'shoeSize',
-    title: '👞 支撑幅面',
-    description: '关于底盘与支撑系统的象征性指标，代表重心、步态与整体落点。',
-    result: props.results?.shoeSize ?? null,
-  },
-  {
-    key: 'factor18',
-    title: '🔮 18 ??-神秘因子',
-    description: '更难被量化的部分通常被归入这一层面：',
-    speculations: [
-      '时间维度：个体生存时长达到某条心理阈值',
-      '代际特征：与某一时间切片有关的集体印象',
-      '特殊参数：关于 18 的全部神秘联想与误读',
-    ] as const,
-    result: props.results?.factor18 ?? null,
-  },
-])
 </script>
 
 <template>
@@ -86,38 +33,70 @@ const factors = computed<FactorCard[]>(() => [
       </article>
 
       <div class="factor-list">
-        <article
-          v-for="factor in factors"
-          :key="factor.key"
-          class="factor-card"
-        >
-          <h3>{{ factor.title }}</h3>
-
-          <p v-if="factor.highlight" class="body-copy">
-            {{ factor.descriptionPrefix }}<span class="highlight">{{ factor.highlight }}</span
-            >{{ factor.descriptionSuffix }}
-          </p>
-
-          <template v-else-if="factor.speculations?.length">
-            <div class="body-copy body-copy-left">
-              <p>{{ factor.description }}</p>
-              <p v-for="speculation in factor.speculations" :key="speculation" class="body-copy-compact">
-                • {{ speculation }}
-              </p>
-            </div>
-          </template>
-
-          <p v-else class="body-copy">{{ factor.description }}</p>
-
-          <div v-if="showResults && factor.result" class="factor-result">
+        <article class="factor-card">
+          <h3>📏 185 cm - 垂直海拔</h3>
+          <p class="body-copy">男性垂直维度基准线，误差范围 ≤±2cm（需提供专业机构测量证明）</p>
+          <div v-if="showResults && results?.height" class="factor-result">
             <div class="factor-result-head">
               <span>你的数值</span>
-              <strong>{{ factor.result.value }}{{ factor.result.unit }}</strong>
+              <strong>{{ results.height.value }}{{ results.height.unit }}</strong>
             </div>
             <div class="result-bar">
-              <span class="result-bar-fill" :style="{ width: `${factor.result.ratio}%` }" />
+              <span class="result-bar-fill" :style="{ width: `${results.height.ratio}%` }" />
             </div>
-            <p class="body-copy body-copy-left body-copy-compact">{{ factor.result.description }}</p>
+            <p class="body-copy body-copy-left body-copy-compact">{{ results.height.description }}</p>
+          </div>
+        </article>
+
+        <article class="factor-card">
+          <h3>⚖️ 90 kg - 质量规范</h3>
+          <p class="body-copy">
+            基于BMI黄金比例公式推算的<span class="highlight">理想质量参数</span>，建议季度动态核查
+          </p>
+          <div v-if="showResults && results?.weight" class="factor-result">
+            <div class="factor-result-head">
+              <span>你的数值</span>
+              <strong>{{ results.weight.value }}{{ results.weight.unit }}</strong>
+            </div>
+            <div class="result-bar">
+              <span class="result-bar-fill" :style="{ width: `${results.weight.ratio}%` }" />
+            </div>
+            <p class="body-copy body-copy-left body-copy-compact">{{ results.weight.description }}</p>
+          </div>
+        </article>
+
+        <article class="factor-card">
+          <h3>👞 45 码 - 支撑系统</h3>
+          <p class="body-copy">足部承载体系规格标准（注：该参数与XP系统无直接关联）</p>
+          <div v-if="showResults && results?.shoeSize" class="factor-result">
+            <div class="factor-result-head">
+              <span>你的数值</span>
+              <strong>{{ results.shoeSize.value }}{{ results.shoeSize.unit }}</strong>
+            </div>
+            <div class="result-bar">
+              <span class="result-bar-fill" :style="{ width: `${results.shoeSize.ratio}%` }" />
+            </div>
+            <p class="body-copy body-copy-left body-copy-compact">{{ results.shoeSize.description }}</p>
+          </div>
+        </article>
+
+        <article class="factor-card">
+          <h3>🕵️ 18 ?? - 神秘因子</h3>
+          <div class="body-copy body-copy-left speculation">
+            <p>学界主要假说：</p>
+            <p class="body-copy-compact">• 时间维度：个体生存时长 ≥18太阳年</p>
+            <p class="body-copy-compact">• 代际特征：公元2018年出生队列</p>
+            <p class="body-copy-compact">• 特殊参数：18cm生理指标（待验证）</p>
+          </div>
+          <div v-if="showResults && results?.factor18" class="factor-result">
+            <div class="factor-result-head">
+              <span>你的数值</span>
+              <strong>{{ results.factor18.value }}{{ results.factor18.unit }}</strong>
+            </div>
+            <div class="result-bar">
+              <span class="result-bar-fill" :style="{ width: `${results.factor18.ratio}%` }" />
+            </div>
+            <p class="body-copy body-copy-left body-copy-compact">{{ results.factor18.description }}</p>
           </div>
         </article>
       </div>
