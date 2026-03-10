@@ -14,7 +14,7 @@ defineProps<{
   <section :id="id" class="snap-panel panel-factors">
     <div class="panel-card panel-stack">
       <div class="section-title-wrap">
-        <span class="section-emoji">🜂</span>
+        <span class="section-emoji">📊</span>
         <h2>四维剖面</h2>
       </div>
 

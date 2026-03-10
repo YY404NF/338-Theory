@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import type { Profile } from '../utils/types'
 
 defineProps<{
@@ -28,6 +28,20 @@ const profiles = computed<Profile[]>(() =>
 const railRef = ref<HTMLElement | null>(null)
 const activeIndex = ref(0)
 
+const centerSlide = (index: number, behavior: ScrollBehavior = 'smooth') => {
+  const rail = railRef.value
+  if (!rail) return
+
+  const child = rail.children[index] as HTMLElement | undefined
+  if (!child) return
+
+  const targetLeft = child.offsetLeft - (rail.clientWidth - child.clientWidth) / 2
+  rail.scrollTo({
+    left: Math.max(0, targetLeft),
+    behavior,
+  })
+}
+
 const updateActiveIndex = () => {
   const rail = railRef.value
   if (!rail) return
@@ -50,13 +64,23 @@ const updateActiveIndex = () => {
   activeIndex.value = nextIndex
 }
 
-onMounted(() => {
+const handleResize = () => {
+  centerSlide(activeIndex.value, 'auto')
   updateActiveIndex()
+}
+
+onMounted(() => {
+  nextTick(() => {
+    centerSlide(0, 'auto')
+    updateActiveIndex()
+  })
   railRef.value?.addEventListener('scroll', updateActiveIndex, { passive: true })
+  window.addEventListener('resize', handleResize)
 })
 
 onBeforeUnmount(() => {
   railRef.value?.removeEventListener('scroll', updateActiveIndex)
+  window.removeEventListener('resize', handleResize)
 })
 </script>
 
