@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onBeforeUnmount, ref } from 'vue'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
 import type { Profile } from '../utils/types'
 
 const props = defineProps<{
@@ -7,16 +7,14 @@ const props = defineProps<{
   profiles: Profile[]
 }>()
 
-const activeIndex = ref(0)
 const railRef = ref<HTMLElement | null>(null)
+const activeIndex = ref(0)
 
 const updateActiveIndex = () => {
   const rail = railRef.value
   if (!rail) return
 
   const children = Array.from(rail.children) as HTMLElement[]
-  if (!children.length) return
-
   const railCenter = rail.scrollLeft + rail.clientWidth / 2
   let nextIndex = 0
   let minDistance = Number.POSITIVE_INFINITY

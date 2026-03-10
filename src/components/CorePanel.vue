@@ -28,8 +28,8 @@ defineProps<{
           由<span class="highlight">{{ core.founder }}</span
           >首创的量化择偶体系，以人体工程学、质感判断与模糊玄学共同构成一道筛选剖面。
         </p>
-        <p class="body-copy body-copy-left body-copy-muted">
-          它并不强调单点数据，而更像是一种由体量、比例、支撑与隐性气质共同构成的审美模型。
+        <p class="body-copy body-copy-muted body-copy-left">
+          它并不只是一组数字，更像一种由比例、体量、支撑与隐性气质叠加出的轮廓感。
         </p>
         <a class="inline-link" :href="core.link" target="_blank" rel="noreferrer">
           👀 {{ core.linkText }}
