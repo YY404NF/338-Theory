@@ -543,7 +543,7 @@ h3 {
 
 .quiz-sheet {
   width: min(100%, 720px);
-  min-height: min(92svh, 760px);
+  max-height: min(92svh, 760px);
   padding: 20px 18px;
   display: flex;
   flex-direction: column;
@@ -565,6 +565,12 @@ h3 {
 .quiz-header-center {
   justify-content: center;
   text-align: center;
+}
+
+.quiz-header-center h2 {
+  font-size: clamp(2.1rem, 7vw, 3rem);
+  line-height: 1.02;
+  letter-spacing: -0.05em;
 }
 
 .quiz-box-grid {

@@ -36,7 +36,7 @@ defineProps<{
 
       <article v-if="showResults" class="feature-card feature-card-blue result-summary-card">
         <div class="result-summary-main">
-          <h3>你的参数映射</h3>
+          <h3>参数剖面回响</h3>
           <p class="body-copy">
             当前共有 <span class="highlight-accent">{{ matchedCount }}</span> 个维度落入标准区间。
           </p>
