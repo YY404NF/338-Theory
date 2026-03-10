@@ -1,0 +1,242 @@
+:root {
+  --primary: #2c3e50;
+  --secondary: #3498db;
+  --accent: #e74c3c;
+  --text: #34495e;
+  --page-bg: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+  line-height: 1.8;
+  font-weight: 400;
+  color: var(--text);
+  background: var(--page-bg);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-width: 320px;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.page-shell {
+  min-height: 100vh;
+  padding: 20px 15px;
+  background: var(--page-bg);
+}
+
+.container {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: rgb(255 255 255 / 95%);
+  border-radius: 15px;
+  box-shadow: 0 8px 30px rgb(0 0 0 / 12%);
+  backdrop-filter: blur(10px);
+}
+
+h1 {
+  position: relative;
+  margin: 0 0 2rem;
+  padding-bottom: 1rem;
+  color: var(--primary);
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+h1::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 80px;
+  height: 3px;
+  background: var(--secondary);
+  border-radius: 2px;
+  transform: translateX(-50%);
+}
+
+h2 {
+  margin: 0 0 0.8rem;
+  color: var(--primary);
+  font-size: 1.3rem;
+}
+
+p {
+  margin: 0.5rem 0;
+}
+
+.theory-item {
+  margin: 1.8rem 0;
+  padding: 1.2rem;
+  background: rgb(52 152 219 / 5%);
+  border-left: 4px solid var(--secondary);
+  border-radius: 0 8px 8px 0;
+  transition: transform 0.3s ease;
+}
+
+.theory-item:hover {
+  transform: translateX(10px);
+}
+
+.highlight {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.external-link {
+  display: inline-block;
+  margin-top: 0.4rem;
+  color: var(--secondary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.profile-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.profile-item {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgb(0 0 0 / 12%);
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  margin-right: 1.2rem;
+  object-fit: cover;
+  background: #fff;
+  border: 3px solid var(--secondary);
+  border-radius: 50%;
+}
+
+.profile-info {
+  display: flex;
+  flex: 1;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile-name {
+  color: var(--primary);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.profile-date {
+  margin-left: 1rem;
+  color: #95a5a6;
+  font-size: 0.9rem;
+  font-family: monospace;
+}
+
+.profile-note {
+  margin-top: 0.8rem;
+  color: #95a5a6;
+  font-size: 0.9rem;
+}
+
+.speculation {
+  position: relative;
+  padding-left: 1.2rem;
+  color: #e67e22;
+}
+
+.speculation::before {
+  content: '?';
+  position: absolute;
+  top: -2px;
+  left: 0;
+  color: #f1c40f;
+  font-weight: 700;
+}
+
+hr {
+  height: 1px;
+  margin: 2rem 0;
+  background: linear-gradient(90deg, transparent 0%, rgb(52 152 219 / 30%) 50%, transparent 100%);
+  border: 0;
+}
+
+.footnote {
+  margin-top: 2.5rem;
+  padding: 1.5rem;
+  background: rgb(231 76 60 / 8%);
+  border: 1px solid rgb(231 76 60 / 20%);
+  border-radius: 8px;
+}
+
+.legal {
+  margin-top: 2.5rem;
+  color: #95a5a6;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1.5rem;
+    border-radius: 10px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .theory-item {
+    margin: 1.2rem 0;
+    padding: 1rem;
+  }
+
+  .avatar {
+    width: 48px;
+    height: 48px;
+  }
+
+  .profile-name {
+    font-size: 1.1rem;
+  }
+
+  .profile-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+
+  .profile-date {
+    margin-left: 0;
+  }
+}
