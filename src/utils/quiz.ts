@@ -4,10 +4,17 @@ export const quizQuestions: QuizQuestion[] = [
   { key: 'height', emoji: '📏', label: '身高', unit: 'cm', ideal: 185 },
   { key: 'weight', emoji: '⚖️', label: '体重', unit: 'kg', ideal: 90 },
   { key: 'shoeSize', emoji: '👟', label: '鞋码', unit: '码', ideal: 45 },
-  { key: 'factor18', emoji: '🔮', label: '18因子', unit: '', ideal: 18 },
+  { key: 'factor18', emoji: '🔮', label: '神秘因子', unit: '??', ideal: 18 },
 ]
 
 const toNumber = (value: string) => Number(value || 0)
+
+const getClosenessRatio = (value: number, ideal: number) => {
+  if (!value) return 0
+  const distance = Math.abs(value - ideal)
+  const maxDistance = Math.max(ideal, 1)
+  return Math.max(0, Math.round((1 - distance / maxDistance) * 100))
+}
 
 const getDimensionDescription = (key: QuizKey, value: number) => {
   if (!value) return '该维度暂未录入有效数字，研究院无法继续追踪。'
@@ -56,7 +63,7 @@ export const buildQuizSummary = (form: Record<QuizKey, string>) => {
     accumulator[question.key] = {
       value,
       unit: question.unit,
-      ratio: value ? Math.min((value / question.ideal) * 100, 100) : 0,
+      ratio: getClosenessRatio(value, question.ideal),
       matched: matched[question.key],
       description: getDimensionDescription(question.key, value),
     }

@@ -30,14 +30,8 @@ const keypadRows = [
   <Teleport to="body">
     <div v-if="isOpen" class="quiz-overlay" @click.self="$emit('close')">
       <section class="quiz-sheet">
-        <div class="quiz-header">
-          <div>
-            <p class="quiz-kicker">🧪 参数测试</p>
-            <h2>测测我是不是338</h2>
-          </div>
-          <button class="quiz-close" type="button" aria-label="Close quiz" @click="$emit('close')">
-            ×
-          </button>
+        <div class="quiz-header quiz-header-center">
+          <h2>测测我是不是338</h2>
         </div>
 
         <div class="quiz-box-grid">
@@ -51,7 +45,7 @@ const keypadRows = [
           >
             <span class="quiz-box-label">{{ question.emoji }} {{ question.label }}</span>
             <strong class="quiz-box-value">
-              {{ form[question.key] || '--' }}{{ form[question.key] ? question.unit : '' }}
+              {{ form[question.key] || '--' }} {{ question.unit }}
             </strong>
           </button>
         </div>
