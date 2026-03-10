@@ -22,7 +22,7 @@ defineProps<{
       <p class="legal-copy">
         * 本理论体系已通过 ISO 338 认证
         <br />
-        最终解释权归马户研究院所有 ©2025
+        最终解释权归马户研究院所有 ©2026
       </p>
     </div>
   </section>

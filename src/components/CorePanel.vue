@@ -26,7 +26,7 @@ defineProps<{
           它并不只是一组数字，更像一种由比例、体量、支撑与隐性气质叠加出的轮廓感。
         </p>
         <a class="inline-link" href="https://space.bilibili.com/228105707" target="_blank" rel="noreferrer">
-          👀 查看原典来源
+          👀 点击查看马户是谁
         </a>
       </article>
     </div>
