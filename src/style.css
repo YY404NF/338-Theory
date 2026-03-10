@@ -400,6 +400,14 @@ h3 {
   gap: 12px;
 }
 
+.result-summary-main {
+  text-align: center;
+}
+
+.result-summary-title {
+  text-align: center;
+}
+
 .global-result-list {
   display: grid;
   gap: 6px;
@@ -423,6 +431,11 @@ h3 {
 .factor-result-head strong {
   color: var(--ink);
   font-size: 1rem;
+}
+
+.factor-card .body-copy {
+  margin-top: 6px;
+  line-height: 1.5;
 }
 
 .result-bar {
@@ -495,7 +508,8 @@ h3 {
 .profile-rail-wrap {
   width: calc(100% + 16px);
   margin: 0 -8px;
-  padding: 22px 0 32px;
+  min-height: 452px;
+  padding: 12px 0 24px;
   overflow: visible;
 }
 
@@ -507,7 +521,7 @@ h3 {
   padding: 0 17%;
   margin: 0;
   overflow-x: auto;
-  overflow-y: hidden;
+  overflow-y: visible;
   overscroll-behavior-x: contain;
   overscroll-behavior-y: none;
   touch-action: auto;
@@ -521,7 +535,7 @@ h3 {
 
 .profile-slide {
   scroll-snap-align: center;
-  padding: 6px 0;
+  padding: 18px 0;
   transition: transform 0.28s ease;
 }
 
@@ -550,6 +564,7 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  overflow-y: auto;
   background:
     linear-gradient(180deg, rgb(255 252 247 / 96%), rgb(255 247 236 / 96%));
   border: 1px solid rgb(255 255 255 / 70%);
@@ -643,6 +658,7 @@ h3 {
 
 .primary-button-full {
   margin-top: 0;
+  flex-shrink: 0;
 }
 
 .primary-button:disabled {
@@ -696,7 +712,7 @@ h3 {
   }
 
   .quiz-sheet {
-    min-height: min(94svh, 780px);
+    max-height: calc(100svh - 24px);
     padding: 16px 14px;
     border-radius: 24px;
   }
