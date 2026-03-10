@@ -13,7 +13,7 @@ type FactorCard = {
   descriptionPrefix?: string
   descriptionSuffix?: string
   highlight?: string
-  speculations?: readonly string[]
+  speculations?: string[]
   result: FactorResult | null
 }
 

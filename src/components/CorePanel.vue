@@ -19,17 +19,18 @@ defineProps<{
       </div>
 
       <article class="feature-card feature-card-warm">
-        <div class="core-frame" aria-hidden="true">
-          <div class="core-frame-line" />
-          <div class="core-frame-value">185 / 90 / 45 / 18</div>
-          <div class="core-frame-line" />
+        <div class="core-numbers" aria-hidden="true">
+          <span>185</span>
+          <span>90</span>
+          <span>45</span>
+          <span>18</span>
         </div>
-        <p class="core-lead">
+        <p class="body-copy">
           由<span class="highlight">{{ core.founder }}</span
           >首创的量化择偶体系，以人体工程学、质感判断与模糊玄学共同构成一道筛选剖面。
         </p>
         <p class="body-copy body-copy-muted body-copy-left">
-          它并不只是一组数字，更像一种由比例、体量、支撑与隐性气质叠加出的轮廓感。
+          {{ core.title }}
         </p>
         <a class="inline-link" :href="core.link" target="_blank" rel="noreferrer">
           👀 {{ core.linkText }}

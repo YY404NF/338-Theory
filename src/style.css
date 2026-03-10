@@ -78,7 +78,7 @@ button {
 .panel-card {
   width: min(100%, 720px);
   min-height: calc(100svh - 24px);
-  padding: 28px 20px;
+  padding: 24px 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -146,7 +146,6 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 18px;
 }
 
 .panel-stack {
@@ -206,14 +205,17 @@ h3 {
 }
 
 .hero-subtitle {
+  margin-top: 16px;
   color: var(--muted);
-  font-size: 1.04rem;
-  line-height: 1.9;
+  font-size: 1rem;
+  line-height: 1.75;
 }
 
 .hero-actions {
   width: 100%;
-  margin-top: 10px;
+  display: grid;
+  gap: 12px;
+  margin-top: 22px;
 }
 
 .body-copy-muted,
@@ -223,7 +225,6 @@ h3 {
 
 .primary-button,
 .secondary-button,
-.hero-scroll-text,
 .quiz-close,
 .quiz-box,
 .keypad-key {
@@ -233,8 +234,8 @@ h3 {
 .primary-button,
 .secondary-button {
   width: 100%;
-  padding: 18px 18px;
-  border-radius: 20px;
+  padding: 15px 16px;
+  border-radius: 18px;
   font-weight: 800;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
@@ -253,19 +254,11 @@ h3 {
 
 .primary-button:hover,
 .secondary-button:hover,
-.hero-scroll-text:hover,
 .quiz-close:hover,
 .quiz-box:hover,
 .keypad-key:hover,
 .github-button:hover {
   transform: translateY(-1px);
-}
-
-.hero-scroll-text {
-  margin-top: 8px;
-  color: var(--muted);
-  font-size: 0.98rem;
-  letter-spacing: 0.08em;
 }
 
 .section-title-wrap {
@@ -341,35 +334,22 @@ h3 {
   font-weight: 800;
 }
 
-.core-frame {
+.core-numbers {
   display: grid;
-  gap: 14px;
-  margin-bottom: 4px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 8px;
 }
 
-.core-frame-line {
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, rgb(128 88 59 / 18%) 18%, rgb(128 88 59 / 18%) 82%, transparent 100%);
-}
-
-.core-frame-value {
-  padding: 16px 18px;
+.core-numbers span {
+  padding: 12px 0;
   color: var(--ink);
   background: rgb(255 255 255 / 56%);
   border: 1px solid rgb(128 88 59 / 10%);
-  border-radius: 20px;
-  font-size: 1.18rem;
+  border-radius: 16px;
+  font-size: 1.1rem;
   font-weight: 800;
-  letter-spacing: 0.16em;
-  text-align: center;
-}
-
-.core-lead {
-  margin-top: 2px;
-  color: var(--ink);
-  font-size: 1.06rem;
-  line-height: 1.84;
-  text-align: center;
+  letter-spacing: -0.03em;
 }
 
 .factor-list {
@@ -494,8 +474,6 @@ h3 {
 .profile-rail-wrap {
   width: calc(100% + 16px);
   margin: 0 -8px;
-  padding: 12px 0 16px;
-  overflow: hidden;
 }
 
 .profile-rail {
@@ -506,10 +484,7 @@ h3 {
   padding: 0 8%;
   margin: 0;
   overflow-x: auto;
-  overflow-y: hidden;
   overscroll-behavior-x: contain;
-  overscroll-behavior-y: none;
-  touch-action: pan-x;
   scroll-snap-type: x mandatory;
   list-style: none;
 }
@@ -520,12 +495,6 @@ h3 {
 
 .profile-slide {
   scroll-snap-align: center;
-  padding: 6px 0;
-  transition: transform 0.28s ease;
-}
-
-.profile-slide-active {
-  transform: scale(1.04);
 }
 
 .quiz-overlay {
