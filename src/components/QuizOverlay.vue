@@ -31,7 +31,7 @@ const keypadRows = [
     <div v-if="isOpen" class="quiz-overlay" @click.self="$emit('close')">
       <section class="quiz-sheet">
         <div class="quiz-header quiz-header-center">
-          <h2>测测我是不是338</h2>
+          <h2 class="quiz-title">测测我是不是338</h2>
         </div>
 
         <div class="quiz-box-grid">

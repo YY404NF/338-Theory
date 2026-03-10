@@ -1,11 +1,29 @@
 <script setup lang="ts">
-import { onBeforeUnmount, onMounted, ref } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import type { Profile } from '../utils/types'
 
-const props = defineProps<{
+defineProps<{
   id?: string
-  profiles: Profile[]
 }>()
+
+const profiles = computed<Profile[]>(() =>
+  [
+    {
+      name: '墨龙辞',
+      date: '2025.05.04 上海',
+      avatar: 'https://q1.qlogo.cn/g?b=qq&nk=424076534&s=640',
+    },
+    {
+      name: '南殇',
+      date: '2024.01.22 北京',
+      avatar: 'https://q1.qlogo.cn/g?b=qq&nk=3489424615&s=640',
+    },
+  ].sort((left, right) => {
+    const [leftDatePart = ''] = left.date.split(' ')
+    const [rightDatePart = ''] = right.date.split(' ')
+    return new Date(rightDatePart.replace(/\./g, '-')).getTime() - new Date(leftDatePart.replace(/\./g, '-')).getTime()
+  }),
+)
 
 const railRef = ref<HTMLElement | null>(null)
 const activeIndex = ref(0)
@@ -53,7 +71,7 @@ onBeforeUnmount(() => {
       <div class="profile-rail-wrap">
         <ul ref="railRef" class="profile-rail">
           <li
-            v-for="(profile, index) in props.profiles"
+            v-for="(profile, index) in profiles"
             :key="profile.name"
             class="profile-slide"
             :class="{ 'profile-slide-active': activeIndex === index }"
